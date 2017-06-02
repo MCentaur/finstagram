@@ -7,19 +7,45 @@ def humanized_time_ago(time_ago_in_minutes)
 end
  
 get '/' do 
-    post = {
+    @post_shark = {
         username: "sharky_j",
-        avatar_url: "naserca.com/images/sharky_j.jpg",
-        photo_url: "naserca.com/images/sharky_j.jpg",
-        time_ago_in_minutes: 15,
+        avatar_url: "http://naserca.com/images/sharky_j.jpg",
+        photo_url:  "http://naserca.com/images/sharky_j.jpg",
+        humanized_time_ago: humanized_time_ago(15),
         like_count: 0,
         comment_count: 1,
-        comments:[
-            "sharky_j: Out for the long weekend...too embarassed to show y'all to the beach bod!"
-                ]
+        comments:[{
+            username: "sharky_j",
+            text: "Out for the long weekend...too embarassed to show y'all to the beach bod!"
+                }]
    
     }
-  
+    @post_whale  = {
+        username: "kirk_whalum",
+        avatar_url: "http://naserca.com/images/kirk_whalum.jpg",
+        photo_url:  "http://naserca.com/images/whale.jpg",
+        humanized_time_ago: humanized_time_ago(65),
+        like_count: 0,
+        comment_count: 1,
+        comments:[{
+            username: "kirk_whalum"
+            text: "#weekendvibes"
+                }]
+    }
+    @post_marlin = {
+        username: "marlin_peppa"
+        avatar_url: "http://naserca.com/images/marlin_peppa.jpg"
+        photo_url:  "http://naserca.com/images/marlin.jpg"
+        humanized_time_ago: humanized_time_ago(190),
+        like_count: 0,
+        comment_count: 1,
+        comments: [{
+            username: "marlin_peppa",
+            text: "lunchtime! ;)"
+        }]
+        
+    }
+[@post_shark, @post_whale, @post_marlin].t_s
     
-erb :index
+erb (:index)
 end
